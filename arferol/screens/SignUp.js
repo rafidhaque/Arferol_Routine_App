@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component,useState} from "react";
 import {
   StyleSheet,
   View,
@@ -14,6 +14,12 @@ import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
 
 function SignUp(props) {
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [confirmpassword,setconfirmpassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <View style={styles.root}>
       <StatusBar barStyle="light-content" backgroundColor="rgba(0,0,0,0)" />
@@ -55,6 +61,9 @@ function SignUp(props) {
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.nameInput}
+                    onChangeText={function(currentinput){
+                      setname(currentinput);
+                    }}
                   ></TextInput>
                 </View>
                 
@@ -71,6 +80,9 @@ function SignUp(props) {
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.emailInput}
+                    onChangeText={function(currentinput){
+                        setemail(currentinput);
+                    }}
                   ></TextInput>
                 </View>
               </View>
@@ -83,6 +95,9 @@ function SignUp(props) {
                   placeholderTextColor="rgba(255,255,255,1)"
                   secureTextEntry={true}
                   style={styles.passwordInput}
+                  onChangeText={function(){
+                    setpassword(currentinput);
+                  }}
                 ></TextInput>
               </View>
              
@@ -94,6 +109,9 @@ function SignUp(props) {
                   placeholderTextColor="rgba(255,255,255,1)"
                   secureTextEntry={true}
                   style={styles.passwordInput}
+                  onChangeText={function(currentinput){
+                    setconfirmpassword(currentinput);
+                  }}
                 ></TextInput>
               </View>
             
