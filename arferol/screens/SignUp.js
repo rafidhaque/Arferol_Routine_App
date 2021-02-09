@@ -97,13 +97,10 @@ function SignUp(props) {
                 ></TextInput>
               </View>
             
-             
-
-
-
             </View>
           </View>
           <View style={styles.progressBarColumnFiller}></View>
+          
           <TouchableOpacity
             onPress={() => props.navigation.navigate("Home")}
             style={styles.button}
@@ -111,7 +108,6 @@ function SignUp(props) {
           <Text style={styles.text2}>Sign Up</Text>
           </TouchableOpacity>
 
-         
           <TouchableOpacity
             onPress={() => props.navigation.navigate("Login")}
             style={styles.button}
