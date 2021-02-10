@@ -24,8 +24,9 @@ const AuthProvider =(props)=>{
      }}
 
      >
+
       {props.children}
-      {console.log(currentuser)}
+      {console.log(props.children)}
     </AuthContext.Provider>
     );
 

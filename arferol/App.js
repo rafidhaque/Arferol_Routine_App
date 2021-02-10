@@ -4,7 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import AuthStackScreen from './navigation/authstack';
 import firebase from 'firebase';
-import {authcontextdata,AuthProvider} from './contexts/authcontext';
+import {AuthContext, authcontextdata,AuthProvider} from './contexts/authcontext';
+import Tabnavigator from './navigation/tabnavigator';
 
 
 var firebaseConfig = {
@@ -24,10 +25,14 @@ firebase.initializeApp(firebaseConfig);
 export default function App() {
   return (
     <AuthProvider>
-      <NavigationContainer>
-       <AuthStackScreen/>
-     </NavigationContainer>
-    </AuthProvider>
+    <AuthContext.Consumer>
+      {(auth) => (
+        <NavigationContainer>
+          {auth.isloggedin ? <Tabnavigator /> : <AuthStackScreen />}
+        </NavigationContainer>
+      )}
+    </AuthContext.Consumer>
+  </AuthProvider>
+);
     
-  );
 }
