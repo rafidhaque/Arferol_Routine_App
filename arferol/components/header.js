@@ -4,15 +4,19 @@ import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommun
 import {AuthContext}  from "../contexts/authcontext";
 
 function Header(props) {
+  console.log(props);
   return (
     <AuthContext.Consumer>
     {(auth) => (
     <View style={[styles.container, props.style]}>
       <View style={styles.leftIconButtonRow}>
-        <TouchableOpacity style={styles.leftIconButton}>
+        <TouchableOpacity style={styles.leftIconButton} >
           <MaterialCommunityIconsIcon
             name="menu"
             style={styles.leftIcon}
+            onPress={()=>{
+            props.toggledrawer();
+            }}
           ></MaterialCommunityIconsIcon>
         </TouchableOpacity>
         <View style={styles.textWrapper}>

@@ -1,17 +1,17 @@
 import React from 'react';
+import {View} from 'react-native';
 import Header from '../components/header';
-import {View,Text} from 'react-native';
-const Notificationscreen =(props)=>{
-
+const Quizlist =(props)=>{
+    
     return(
         <View>
-            <Header toggledrawer={()=>{
+             <Header toggledrawer={()=>{
                 props.navigation.toggleDrawer();
             }}>
          </Header>
-          <Text>Notification</Text>  
+        Quizlist
         </View>
     )
 }
 
-export default Notificationscreen;
+export default Quizlist;

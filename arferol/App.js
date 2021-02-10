@@ -5,7 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import AuthStackScreen from './navigation/authstack';
 import firebase from 'firebase';
 import {AuthContext, authcontextdata,AuthProvider} from './contexts/authcontext';
-import Tabnavigator from './navigation/tabnavigator';
+import Drawernavigator from './navigation/drawernavigator';
 
 
 var firebaseConfig = {
@@ -28,7 +28,7 @@ export default function App() {
     <AuthContext.Consumer>
       {(auth) => (
         <NavigationContainer>
-          {auth.isloggedin ? <Tabnavigator /> : <AuthStackScreen />}
+          {auth.isloggedin ? <Drawernavigator /> : <AuthStackScreen />}
         </NavigationContainer>
       )}
     </AuthContext.Consumer>

@@ -1,13 +1,16 @@
 import React from 'react';
 import Header from '../components/header';
-import {View} from 'react-native';
+import {View,Text} from 'react-native';
 
 const Homescreen =(props)=>{
-
-    return(
+      console.log(props);
+       return(
         <View>
-            <Header></Header>
-            HomeScreen
+          <Header toggledrawer={()=>{
+                props.navigation.toggleDrawer();
+            }}>
+         </Header>
+          <Text>HomeScreen</Text>  
         </View>
     )
 }

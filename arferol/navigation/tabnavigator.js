@@ -8,7 +8,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 const Tabnavigator =()=>{
      return(
-        <Tab.Navigator initialRouteName="HomeScreen" barStyle={{ backgroundColor: '#3F51B5'}}>
+        <Tab.Navigator initialRouteName="Home" barStyle={{ backgroundColor: '#3F51B5'}}>
         <Tab.Screen
           name="Home"
           component={Homescreen}
