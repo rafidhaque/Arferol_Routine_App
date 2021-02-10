@@ -10,13 +10,16 @@ import {
 } from "react-native";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
 import firebase from 'firebase';
+import {AuthContext} from "../contexts/authcontext";
 
 function Login(props) {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  return (
+ 
+   return (
+    <AuthContext.Consumer>
+    {(auth) => (
     <View style={styles.root}>
       <StatusBar barStyle="light-content" backgroundColor="rgba(0,0,0,0)" />
       <View style={styles.background}>
@@ -73,9 +76,8 @@ function Login(props) {
                   .signInWithEmailAndPassword(email, password)
                   .then((userCreds) => {
                    alert("Login Successful");
-                    // setIsLoading(false);
-                   // auth.setIsLoggedIn(true);
-                   // auth.setCurrentUser(userCreds.user);
+                    auth.setisloggedin(true);
+                    auth.setcurrentuser(userCreds.user)              
                   })
                   .catch((error) => {
                   //  setIsLoading(false);
@@ -93,10 +95,7 @@ function Login(props) {
                 style={styles.button}
               >
               <Text style={styles.text2}>Don't Have an account?Sign Up</Text>
-              </TouchableOpacity>
-            
-            
-            
+              </TouchableOpacity>   
             </View>
           </View>
           <View style={styles.logoColumnFiller}></View>
@@ -104,8 +103,11 @@ function Login(props) {
         </ImageBackground>
       </View>
     </View>
-  );
-}
+    )}
+  </AuthContext.Consumer>
+   );
+};
+
 
 const styles = StyleSheet.create({
   root: {
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
   },
   bx: {
     color: "rgba(255,255,255,1)",
-    fontSize: 100,
+    fontSize: 50,
     marginTop: -35,
     alignSelf:"center"
   },

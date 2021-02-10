@@ -3,7 +3,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import AuthStackScreen from './navigation/authstack';
-import firebase from 'firebase'
+import firebase from 'firebase';
+import {authcontextdata,AuthProvider} from './contexts/authcontext';
 
 
 var firebaseConfig = {
@@ -18,10 +19,15 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 
+
+
 export default function App() {
   return (
-     <NavigationContainer>
+    <AuthProvider>
+      <NavigationContainer>
        <AuthStackScreen/>
      </NavigationContainer>
+    </AuthProvider>
+    
   );
 }
