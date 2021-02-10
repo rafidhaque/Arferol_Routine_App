@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component,useState } from "react";
 import {
   StyleSheet,
   View,
@@ -9,8 +9,13 @@ import {
   TouchableOpacity
 } from "react-native";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
+import firebase from 'firebase';
 
 function Login(props) {
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <View style={styles.root}>
       <StatusBar barStyle="light-content" backgroundColor="rgba(0,0,0,0)" />
@@ -34,10 +39,13 @@ function Login(props) {
                     style={styles.icon22}
                   ></EvilIconsIcon>
                   <TextInput
-                    placeholder="Username"
+                    placeholder="Email"
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.usernameInput}
+                    onChangeText={function(currentinput){
+                      setemail(currentinput);
+                    }}
                   ></TextInput>
                 </View>
                 <View style={styles.password}>
@@ -50,12 +58,31 @@ function Login(props) {
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={true}
                     style={styles.passwordInput}
+                    onChangeText={function(currentinput){
+                      setpassword(currentinput);
+                    }}
                   ></TextInput>
                 </View>
               </View>
               <View style={styles.usernameColumnFiller}></View>
               <TouchableOpacity
-                onPress={() => props.navigation.navigate("Channels")}
+                onPress={() => {
+                 // setIsLoading(true);
+                  firebase
+                  .auth()
+                  .signInWithEmailAndPassword(email, password)
+                  .then((userCreds) => {
+                   alert("Login Successful");
+                    // setIsLoading(false);
+                   // auth.setIsLoggedIn(true);
+                   // auth.setCurrentUser(userCreds.user);
+                  })
+                  .catch((error) => {
+                  //  setIsLoading(false);
+                    alert(error);
+                  });
+
+                }}
                 style={styles.button}
               >
                 <Text style={styles.text2}>Login</Text>

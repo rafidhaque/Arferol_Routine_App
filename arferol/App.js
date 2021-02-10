@@ -3,10 +3,10 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import AuthStackScreen from './navigation/authstack';
-import SignUp from './screens/SignUp'
-import * as firebase from 'firebase';
+import firebase from 'firebase'
 
-const firebaseConfig = {
+
+var firebaseConfig = {
   apiKey: "AIzaSyAEF7D1zGr03lrJ6suMUQwwjp5ZG5grQWQ",
   authDomain: "iutroutineapp.firebaseapp.com",
   projectId: "iutroutineapp",
@@ -16,6 +16,7 @@ const firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
 
 export default function App() {
   return (

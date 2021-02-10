@@ -12,6 +12,7 @@ import IoniconsIcon from "react-native-vector-icons/Ionicons";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
+import firebase from 'firebase';
 
 function SignUp(props) {
   const [name, setname] = useState("");
@@ -62,7 +63,9 @@ function SignUp(props) {
                     secureTextEntry={false}
                     style={styles.nameInput}
                     onChangeText={function(currentinput){
+                      
                       setname(currentinput);
+                      
                     }}
                   ></TextInput>
                 </View>
@@ -81,7 +84,9 @@ function SignUp(props) {
                     secureTextEntry={false}
                     style={styles.emailInput}
                     onChangeText={function(currentinput){
+                    
                         setemail(currentinput);
+                    
                     }}
                   ></TextInput>
                 </View>
@@ -95,8 +100,10 @@ function SignUp(props) {
                   placeholderTextColor="rgba(255,255,255,1)"
                   secureTextEntry={true}
                   style={styles.passwordInput}
-                  onChangeText={function(){
+                  onChangeText={function(currentinput){
+                   
                     setpassword(currentinput);
+                 
                   }}
                 ></TextInput>
               </View>
@@ -110,7 +117,9 @@ function SignUp(props) {
                   secureTextEntry={true}
                   style={styles.passwordInput}
                   onChangeText={function(currentinput){
+                    
                     setconfirmpassword(currentinput);
+                    
                   }}
                 ></TextInput>
               </View>
@@ -120,7 +129,49 @@ function SignUp(props) {
           <View style={styles.progressBarColumnFiller}></View>
           
           <TouchableOpacity
-            onPress={() => props.navigation.navigate("Home")}
+            onPress={() => {
+                if(name && email && password && confirmpassword){
+                  if(password!=confirmpassword){
+                    alert("Passwords Do not match");
+                 }
+                 else{
+                  firebase
+                  .auth()
+                  .createUserWithEmailAndPassword(email, password)
+                  .then((userCreds) => {
+                    userCreds.user.updateProfile({ displayName: name });
+                    firebase
+                      .firestore()
+                      .collection("users")
+                      .doc(userCreds.user.uid)
+                      .set({
+                        name: name,
+                        email: email,
+                      })
+                      .then(() => {
+                      
+                        alert("Account created successfully!");
+                        console.log(userCreds.user);
+                        props.navigation.navigate("Login");
+                      })
+                      .catch((error) => {
+                        
+                        alert(error);
+                      });
+                  })
+                  .catch((error) => {
+                    
+                    alert(error);
+                  });
+                 }
+              } 
+               else{
+                  alert("Fields Cannot be empty");
+               }
+               
+                
+             }
+           }
             style={styles.button}
           >
           <Text style={styles.text2}>Sign Up</Text>
