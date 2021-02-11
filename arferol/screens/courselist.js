@@ -4,7 +4,6 @@ import {View,Text,StyleSheet, Dimensions} from 'react-native';
 import Coursecard from '../components/coursecard';
 
 const Courselist=(props)=>{
-      let ScreenHeight = Dimensions.get("window").height;
       console.log(props);
        return(
         <View style={styles.mainview}>
