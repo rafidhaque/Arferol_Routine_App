@@ -7,7 +7,9 @@ const Quizlist =(props)=>{
         <View>
              <Header toggledrawer={()=>{
                 props.navigation.toggleDrawer();
-            }}>
+            }}
+            title ="Quizlist"
+            >
          </Header>
          <Text style={{justifyContent:"center",alignContent:"center"}}>Quizlist</Text>  
         </View>

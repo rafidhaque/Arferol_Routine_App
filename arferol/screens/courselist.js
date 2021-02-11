@@ -8,7 +8,9 @@ const Courselist=(props)=>{
         <View>
           <Header toggledrawer={()=>{
                 props.navigation.toggleDrawer();
-            }}>
+            }}
+            title="Courses"
+            >
          </Header>
          <Text style={{justifyContent:"center",alignContent:"center"}}>  
         Courses

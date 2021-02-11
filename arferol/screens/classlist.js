@@ -7,7 +7,9 @@ const Classlist =(props)=>{
         <View>
              <Header toggledrawer={()=>{
                 props.navigation.toggleDrawer();
-            }}>
+            }}
+            title="Classes"
+            >
          </Header>
          <Text style={{justifyContent:"center",alignContent:"center"}}>Classlist</Text>  
         </View>

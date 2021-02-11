@@ -4,7 +4,6 @@ import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommun
 import {AuthContext}  from "../contexts/authcontext";
 
 function Header(props) {
-  console.log(props);
   return (
     <AuthContext.Consumer>
     {(auth) => (
@@ -21,7 +20,7 @@ function Header(props) {
         </TouchableOpacity>
         <View style={styles.textWrapper}>
           <Text numberOfLines={1} style={styles.title}>
-            Home
+            {props.title}
           </Text>
         </View>
       </View>
