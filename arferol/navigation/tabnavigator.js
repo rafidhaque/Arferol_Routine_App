@@ -1,7 +1,7 @@
 import React from "react";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { Entypo, AntDesign, Ionicons } from "@expo/vector-icons";
-import Homescreen from '../screens/homescreen';
+import Homescreen from '../screens/courselist';
 import Notificationscreen from '../screens/notificationscreen'
 
 const Tab = createMaterialBottomTabNavigator();

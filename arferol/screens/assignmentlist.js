@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View,Text} from 'react-native';
 import Header from '../components/header';
 
 const Assignmentlist =(props)=>{
@@ -10,7 +10,7 @@ const Assignmentlist =(props)=>{
                 props.navigation.toggleDrawer();
             }}>
          </Header>
-        Assignmentlist
+         <Text style={{justifyContent:"center",alignContent:"center"}}> Assignmentlist</Text>  
         </View>
     )
 }

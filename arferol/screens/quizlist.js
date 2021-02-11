@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View,Text} from 'react-native';
 import Header from '../components/header';
 const Quizlist =(props)=>{
     
@@ -9,7 +9,7 @@ const Quizlist =(props)=>{
                 props.navigation.toggleDrawer();
             }}>
          </Header>
-        Quizlist
+         <Text style={{justifyContent:"center",alignContent:"center"}}>Quizlist</Text>  
         </View>
     )
 }

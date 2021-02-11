@@ -9,7 +9,7 @@ const Classlist =(props)=>{
                 props.navigation.toggleDrawer();
             }}>
          </Header>
-         <Text>Classlist</Text>  
+         <Text style={{justifyContent:"center",alignContent:"center"}}>Classlist</Text>  
         </View>
     )
 

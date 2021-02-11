@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/header';
 import {View,Text} from 'react-native';
 
-const Homescreen =(props)=>{
+const Courselist=(props)=>{
       console.log(props);
        return(
         <View>
@@ -10,9 +10,11 @@ const Homescreen =(props)=>{
                 props.navigation.toggleDrawer();
             }}>
          </Header>
-          <Text>HomeScreen</Text>  
+         <Text style={{justifyContent:"center",alignContent:"center"}}>  
+        Courses
+        </Text>
         </View>
     )
 }
 
-export default Homescreen;
+export default Courselist;
