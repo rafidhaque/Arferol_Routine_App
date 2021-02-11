@@ -12,13 +12,13 @@ const Coursecard =(props)=>{
              }
         />
         <View style={styles.detailstyle}>
-            <Text style={styles.textstyle}>Course Name:CSE 4623 Mobile and App Development</Text>
+            <Text style={styles.textstyle}>Course Name:CSE 4623 Mobile and App Development </Text>
             <Text style={styles.textstyle} >Instructor:Tasnim Ahmed</Text>
         <View style={styles.buttongroupstyle}>
-        <Button title="View Classes"> </Button>   
-        <Button title="View Quiz"> </Button>  
-        <Button title="View Assignment"> </Button>  
-        </View >
+            <Text > <Button title="View Classes"> </Button> </Text>     
+            <Text > <Button title="View Quiz"> </Button>   </Text> 
+            <Text style={styles.buttonstyle}> <Button title="View Assignment"> </Button>  </Text> 
+        </View>
 
          </View>      
         </View>
@@ -35,32 +35,35 @@ const styles = StyleSheet.create({
         marginStart:10,
         marginEnd:10,   
         borderRadius:5,
-        height:320,
+        height:215,
         shadowOpacity: 0.50,
         shadowRadius: 10,
         elevation:10,
         flexDirection:"column",
-       
     },
     detailstyle:{
         marginTop:9,
         marginStart:10,
         marginEnd:10,
-        flexDirection:"column",    
+        flexDirection:"column",
+        alignSelf:"stretch"
+          
     },
     buttongroupstyle:{
-        flexDirection:"column", 
-        marginLeft:2,
-        marginVertical:6 
-
+        flexDirection:"row", 
+        marginLeft:-4,
+        marginVertical:8,
+        alignSelf:"stretch"
+               
     },
     textstyle:{
         fontWeight:"bold",
-        fontSize:14,
-     
-        
+        fontSize:15,
+    },
+    buttonstyle:{
+        left:-7.1
     }
-  
+
 
 });
 
