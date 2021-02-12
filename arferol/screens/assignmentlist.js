@@ -1,7 +1,7 @@
 import React from 'react';
 import {View,Text,StyleSheet} from 'react-native';
 import Header from '../components/header';
-
+import Assignmentdetail from '../components/assignmentdetail';
 const Assignmentlist =(props)=>{
 
     return(
@@ -13,6 +13,8 @@ const Assignmentlist =(props)=>{
             >
          </Header>
          <Text style={styles.textstyle}>Assignmentlist:</Text>  
+         <Assignmentdetail></Assignmentdetail>
+         <Assignmentdetail></Assignmentdetail>
         </View>
     )
 }
