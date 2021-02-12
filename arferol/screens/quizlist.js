@@ -1,6 +1,7 @@
 import React from 'react';
 import {View,Text,StyleSheet} from 'react-native';
 import Header from '../components/header';
+import Quizdetail from '../components/quizdetail';
 const Quizlist =(props)=>{
     
     return(
@@ -12,6 +13,8 @@ const Quizlist =(props)=>{
             >
          </Header>
          <Text style={styles.textstyle}>Quizlist:</Text>  
+      <Quizdetail></Quizdetail>
+      <Quizdetail></Quizdetail>
         </View>
     )
 }
