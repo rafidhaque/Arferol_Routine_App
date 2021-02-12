@@ -8,7 +8,7 @@ const Quizlist =(props)=>{
              <Header toggledrawer={()=>{
                 props.navigation.toggleDrawer();
             }}
-              title="Assignments"
+              title="Quizlist"
             >
          </Header>
          <Text style={styles.textstyle}>Quizlist:</Text>  

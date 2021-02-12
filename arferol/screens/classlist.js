@@ -1,6 +1,7 @@
 import React from 'react';
 import {View,Text,StyleSheet} from 'react-native';
 import Header from '../components/header';
+import Classdetail from '../components/classdetail';
 const Classlist =(props)=>{
    console.log(props);
     return(
@@ -12,6 +13,10 @@ const Classlist =(props)=>{
             >
          </Header>
          <Text style={styles.textstyle}>Classlist</Text>  
+          
+         <Classdetail> </Classdetail>
+
+
         </View>
     )
 

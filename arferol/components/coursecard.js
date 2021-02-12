@@ -15,8 +15,8 @@ const Coursecard =(props)=>{
             <Text style={styles.textstyle}>Course Name:CSE 4623 Mobile and App Development </Text>
             <Text style={styles.textstyle} >Instructor:Tasnim Ahmed</Text>
         <View style={styles.buttongroupstyle}>
-            <Text > <Button title="View Classes"> </Button> </Text>     
-            <Text > <Button title="View Quiz"> </Button>   </Text> 
+            <Text> <Button title="View Classes"> </Button> </Text>     
+            <Text> <Button title="View Quiz"> </Button>   </Text> 
             <Text style={styles.buttonstyle}> <Button title="View Assignment"> </Button>  </Text> 
         </View>
 
