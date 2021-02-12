@@ -3,7 +3,7 @@ import Header from '../components/header';
 import {View,Text,StyleSheet,ScrollView} from 'react-native';
 import Coursecard from '../components/coursecard';
 const Courselist=(props)=>{
-      console.log(props);
+      console.log(props.navigation);
        return(
         <View style={styles.mainview}>
           <Header toggledrawer={()=>{
