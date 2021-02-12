@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import {View,Text,StyleSheet, ScrollView} from 'react-native';
 import Header from '../components/header';
 import Quizdetail from '../components/quizdetail';
 const Quizlist =(props)=>{
@@ -13,8 +13,13 @@ const Quizlist =(props)=>{
             >
          </Header>
          <Text style={styles.textstyle}>Quizlist:</Text>  
-      <Quizdetail></Quizdetail>
-      <Quizdetail></Quizdetail>
+      <ScrollView style={styles.coursetyle}>
+            <Quizdetail></Quizdetail>
+            <Quizdetail></Quizdetail>
+            <Quizdetail></Quizdetail>
+            <Quizdetail></Quizdetail>
+      </ScrollView>
+      
         </View>
     )
 }

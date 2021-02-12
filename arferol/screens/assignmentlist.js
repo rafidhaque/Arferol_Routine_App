@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import {View,Text,StyleSheet, ScrollView} from 'react-native';
 import Header from '../components/header';
 import Assignmentdetail from '../components/assignmentdetail';
 const Assignmentlist =(props)=>{
@@ -13,8 +13,15 @@ const Assignmentlist =(props)=>{
             >
          </Header>
          <Text style={styles.textstyle}>Assignmentlist:</Text>  
-         <Assignmentdetail></Assignmentdetail>
-         <Assignmentdetail></Assignmentdetail>
+         <ScrollView style={styles.coursetyle}>
+            <Assignmentdetail></Assignmentdetail>
+            <Assignmentdetail></Assignmentdetail>
+            <Assignmentdetail></Assignmentdetail>
+            <Assignmentdetail></Assignmentdetail>
+            <Assignmentdetail></Assignmentdetail>
+
+         </ScrollView>
+        
         </View>
     )
 }

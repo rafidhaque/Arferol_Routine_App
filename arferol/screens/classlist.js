@@ -1,7 +1,8 @@
 import React from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import {View,Text,StyleSheet, ScrollView} from 'react-native';
 import Header from '../components/header';
 import Classdetail from '../components/classdetail';
+
 const Classlist =(props)=>{
    console.log(props);
     return(
@@ -12,10 +13,18 @@ const Classlist =(props)=>{
             title="Classes"
             >
          </Header>
-         <Text style={styles.textstyle}>Classlist</Text>  
-          
-         <Classdetail> </Classdetail>
-
+         <Text style={styles.textstyle}>
+          Classlist:
+         </Text>  
+         <ScrollView style={{height:600}} >
+            <Classdetail> </Classdetail>
+            <Classdetail> </Classdetail>
+            <Classdetail> </Classdetail>
+            <Classdetail> </Classdetail>
+            <Classdetail> </Classdetail>
+            <Classdetail> </Classdetail>
+            <Classdetail> </Classdetail>
+          </ScrollView>
 
         </View>
     )
@@ -27,9 +36,9 @@ const styles = StyleSheet.create({
     mainview:{
       flex:1,  
     },
-    coursetyle:{
+    courseview:{
       flex:1,
-      flexDirection:"column"
+      flexDirection:"column" 
     },
     textstyle:{
       fontSize:30,

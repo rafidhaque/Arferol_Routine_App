@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from '../components/header';
-import {View,Text,StyleSheet, Dimensions} from 'react-native';
+import {View,Text,StyleSheet,ScrollView} from 'react-native';
 import Coursecard from '../components/coursecard';
-
 const Courselist=(props)=>{
       console.log(props);
        return(
@@ -16,10 +15,13 @@ const Courselist=(props)=>{
           <Text style={styles.textstyle}>  
              Courses: 
          </Text>
-        <View style={styles.coursetyle}>
+        <ScrollView style={styles.coursetyle}>
            <Coursecard></Coursecard>
            <Coursecard></Coursecard>
-        </View>
+           <Coursecard></Coursecard>
+           <Coursecard></Coursecard>
+           
+        </ScrollView>
         
         </View>
     )
