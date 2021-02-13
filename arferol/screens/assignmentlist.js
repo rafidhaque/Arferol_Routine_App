@@ -3,6 +3,14 @@ import {View,Text,StyleSheet, ScrollView} from 'react-native';
 import Header from '../components/header';
 import Assignmentdetail from '../components/assignmentdetail';
 const Assignmentlist =(props)=>{
+  let button; 
+  if(props.route.params==undefined){
+    button = false;
+  }
+  else{
+    button = props.route.params.button;
+  }
+
   const [assignments,setassignments] = useState([
     { 
       key:1,
@@ -36,7 +44,8 @@ const Assignmentlist =(props)=>{
               title="Assignments"
             >
          </Header>
-         <Text style={styles.textstyle}>Assignmentlist:</Text>  
+         <Text style={styles.textstyle}>Assignmentlist:</Text>
+         {button ? button : false}
          <ScrollView style={styles.coursetyle}>
            
               {

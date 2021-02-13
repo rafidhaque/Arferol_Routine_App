@@ -2,7 +2,6 @@ import React from 'react';
 import {View,Text,StyleSheet,Image, Button} from 'react-native';
 
 const Coursecard =(props)=>{
-   console.log(props.navigation);
     return(
         <View style={styles.cardstyle}>
         
@@ -16,13 +15,13 @@ const Coursecard =(props)=>{
             <Text style={styles.textstyle} >Instructor:{props.instructor}</Text>
         <View style={styles.buttongroupstyle}>
             <Text> <Button title="View Classes" onPress={()=>{
-                props.navigation.navigate("Classlist")
+                props.navigation.navigate("Classlist",{button:<View style={{padding:10}}><Button title="Add Class"></Button></View>})
             }}> </Button> </Text>     
             <Text> <Button title="View Quiz" onPress={()=>{
-                props.navigation.navigate("Quizlist")
+                props.navigation.navigate("Quizlist",{button:<View style={{padding:10}}><Button title="Add Quiz"></Button></View>})
             }} > </Button>   </Text> 
             <Text style={styles.buttonstyle}> <Button title="View Assignment" onPress={()=>{
-                props.navigation.navigate("Assignmentlist")
+                props.navigation.navigate("Assignmentlist",{button:<View style={{padding:10}}><Button title="Add Assignment"></Button></View>})
             }}> </Button>  </Text> 
         </View>
 

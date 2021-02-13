@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/header';
-import {View,Text,StyleSheet,ScrollView} from 'react-native';
+import {View,Text,StyleSheet,ScrollView, Button} from 'react-native';
 import Coursecard from '../components/coursecard';
 const Courselist=(props)=>{
      const [courses,setcourses] = useState([
@@ -33,6 +33,7 @@ const Courselist=(props)=>{
           <Text style={styles.textstyle}>  
              Courses: 
          </Text>
+      <View style={{padding:10}}><Button title="Add Course"></Button></View>  
         <ScrollView style={styles.coursetyle}>
            {
            courses.map((item) =>{

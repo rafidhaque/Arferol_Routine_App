@@ -3,12 +3,20 @@ import {View,Text,StyleSheet, ScrollView} from 'react-native';
 import Header from '../components/header';
 import Quizdetail from '../components/quizdetail';
 const Quizlist =(props)=>{
+  let button; 
+  if(props.route.params==undefined){
+    button = false;
+  }
+  else{
+    button = props.route.params.button;
+  }
+
   const [quizlist,setquizlist] = useState([
     { 
       key:1,
       title:"CSE 4623 Mobile and App Development",
       instructor:"Tasnim Ahmed",
-      date:"20 February 2020",
+      date:"15 April 2021 23:59:59 GMT",
       syllabus:"Implement blog App",
       status:"Not attended",
       time_remaining:"5 days 6 hours 36 minutes 11 seconds"
@@ -17,6 +25,7 @@ const Quizlist =(props)=>{
       key:2,
       title:"CSE 4617 Microprocessor and Interfacing",
       instructor:"Ashraful Alam",
+      date:"15 April 2021 23:59:59 GMT",
       syllabus:"Draw Timing Diagram",
       status:"Not attended",
       time_remaining:"5 days 6 hours 36 minutes 11 seconds",
@@ -25,6 +34,7 @@ const Quizlist =(props)=>{
       key:3,
       title:"Math 4633 Probability and Statistics",
       instructor:"Abdul Hakim Khan",
+      date:"15 April 2021 23:59:59 GMT",
       syllabus:"Queing theory",
       status:"Not attended",
       time_remaining:"5 days 6 hours 36 minutes 11 seconds"
@@ -39,7 +49,8 @@ const Quizlist =(props)=>{
               title="Quizlist"
             >
          </Header>
-         <Text style={styles.textstyle}>Quizlist:</Text>  
+         <Text style={styles.textstyle}>Quizlist:</Text> 
+         {button ? button : false}  
       <ScrollView style={styles.coursetyle}>
              {
                 quizlist.map((item) =>{

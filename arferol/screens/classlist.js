@@ -1,8 +1,16 @@
 import React,{useState} from 'react';
-import {View,Text,StyleSheet, ScrollView} from 'react-native';
+import {View,Text,StyleSheet, ScrollView,Button} from 'react-native';
 import Header from '../components/header';
 import Classdetail from '../components/classdetail';
 const Classlist =(props)=>{
+  let button; 
+  if(props.route.params==undefined){
+    button = false;
+  }
+  else{
+    button = props.route.params.button;
+  }
+
   const [classes,setclasses] = useState([
     { 
       key:1,
@@ -26,7 +34,7 @@ const Classlist =(props)=>{
       status:"Not done"
     } 
    ]) 
-  console.log(props.navigation);
+  console.log(props);
     return(
         <View style={styles.mainview}>
              <Header toggledrawer={()=>{
@@ -35,7 +43,8 @@ const Classlist =(props)=>{
               title="Classlist"
             >
          </Header>
-         <Text style={styles.textstyle}>Classlist:</Text>  
+         <Text style={styles.textstyle}>Classlist:</Text> 
+        {button ? button : false}
       <ScrollView style={styles.coursetyle}>
          {
           classes.map((item) =>{
