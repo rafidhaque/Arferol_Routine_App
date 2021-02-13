@@ -1,11 +1,27 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import {View,Text,StyleSheet,TextInput, Button} from 'react-native';
 import Header from '../components/header'
-import Calendar from 'react-native-calendars';
+import {Calendar} from 'react-native-calendars';
+import {calculate_days_months_years_from_miliseconds} from '../funtionality/countdowntimer';
 
 const Addnewquiz =(props)=>{
-      const [date,setdate] = useState(new Date());
       const [syllabus,setsyllabus] =  useState("");
+      const [date,setdate] = useState("");
+      
+const formatdate =()=>{
+
+     let year =   new Date().getFullYear();
+     let month = (new Date().getMonth())+1;
+     let day =  new Date().getDate();
+     setdate(year+"-"+month+"-"+day);
+    // console.log(result);
+    
+
+}
+    useEffect(() =>{
+      formatdate();
+    },[])
+
 
       return(
           <View style={styles.viewstyle}>
@@ -40,7 +56,17 @@ const Addnewquiz =(props)=>{
            />
 
            </View>
+          <View style={styles.syllbutton}>
+           
+            <Calendar 
+                onDayPress={(day) => {console.log('selected day', day)}}
+                markedDates={{
+                     [date]:{selected: true, selectedColor: 'dodgerblue'}
+                }}
+             ></Calendar>
+         
 
+          </View>
 
            <View style={styles.syllbutton}>  
             <TextInput

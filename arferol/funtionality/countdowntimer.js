@@ -20,3 +20,17 @@ const calculate_remaining_time =(time)=>{
     
 
 }
+
+const calculate_days_months_years_from_miliseconds = (date)=>{
+    let result=[]
+    let day = date.getDate();
+    let month=date.getMonth();
+    month=month+1;
+    let year= date.getFullYear()
+
+    return result[day,month,year]
+
+
+}
+
+export {calculate_remaining_time,calculate_days_months_years_from_miliseconds}
