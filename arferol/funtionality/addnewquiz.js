@@ -3,9 +3,8 @@ import {View,Text,StyleSheet,TextInput, Button} from 'react-native';
 import Header from '../components/header';
 
 const Addnewquiz =(props)=>{
-      const [coursetitle,setcoursetitle] = useState("");
-      const [instructor,setinstructor] =  useState("");
-      const [credit,setcredit] = useState(0);
+      const [date,setdate] = useState("");
+      const [syllabus,setsyllabus] =  useState("");
 
       return(
           <View style={styles.viewstyle}>

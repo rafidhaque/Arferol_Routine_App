@@ -6,7 +6,7 @@ import Assignmentlist from '../../screens/assignmentlist';
 import Quizlist from '../../screens/quizlist';
 import Addnewcourse from '../../funtionality/addnewcourse';
 import Addnewassignment from '../../funtionality/addnewassignment';
-import Addnewquiz from '../../funtionality/addnewassignment';
+import Addnewquiz from '../../funtionality/addnewquiz';
 const CourseStack = createStackNavigator();
 
 const Coursestackscreen =(props)=>{
