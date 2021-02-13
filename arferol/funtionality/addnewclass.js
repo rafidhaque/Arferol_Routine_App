@@ -1,7 +1,8 @@
 import React,{useEffect, useState} from 'react';
-import {View,Text,StyleSheet,TextInput, Button} from 'react-native';
+import {View,Text,StyleSheet,TextInput, Button,Pic, ScrollView} from 'react-native';
 import Header from '../components/header'
 import {Calendar} from 'react-native-calendars';
+import {Picker} from '@react-native-community/picker'
 
 const Addnewclass =(props)=>{
       const [syllabus,setsyllabus] =  useState("");
@@ -9,9 +10,12 @@ const Addnewclass =(props)=>{
       const [day,setday] =useState("day");
       const [month,setmonth] = useState("month");
       const [year,setyear] = useState("year");
-
+      const [time,settime] = useState("");
+      const [pickedhour,setpickedhour] = useState(0);
+      const [pickedminute,setpickedminute] = useState(0);
+      const [am_pm,set_am_pm] =useState('AM')
      // return markedDates
-      
+
 const formatdate =()=>{
      let a =   new Date().getFullYear();
      let b = (new Date().getMonth())+1;
@@ -37,6 +41,7 @@ const updatedatebox =()=>{
 
     useEffect(() =>{
       formatdate();
+      
     },[])
     useEffect(() =>{
       updatedatebox();
@@ -44,14 +49,14 @@ const updatedatebox =()=>{
 
 
     return(
-          <View style={styles.viewstyle}>
+          <ScrollView style={styles.viewstyle}>
                <Header toggledrawer={()=>{
                   props.navigation.toggleDrawer();
               }}
-                title="Addnewassignment"
+                title="Addnewclass"
               >
            </Header>
-           <Text style={styles.textstyle}>Deadline:</Text>  
+           <Text style={styles.textstyle}>Add:</Text>  
            <View style={styles.view}>  
             <Text
                  style={{ height: 40, borderColor: 'dodgerblue', borderWidth: 2 ,width:100,paddingLeft:42,paddingTop:10}}
@@ -84,21 +89,110 @@ const updatedatebox =()=>{
          
 
           </View>
+      <View style={styles.view}>
+      <Picker
+          selectedValue={pickedhour}
+          style={{ height: 50, width: 150 }}
+          onValueChange={(itemValue, itemIndex) => setpickedhour(itemValue)}
+      >   
+      <Picker.Item label ="0" value={0}></Picker.Item> 
+      <Picker.Item label ="1" value={1}></Picker.Item> 
+      <Picker.Item label ="2" value={2}></Picker.Item> 
+      <Picker.Item label ="3" value={3}></Picker.Item> 
+      <Picker.Item label ="4" value={4}></Picker.Item> 
+      <Picker.Item label ="5" value={5}></Picker.Item> 
+      <Picker.Item label ="6" value={6}></Picker.Item> 
+      <Picker.Item label ="8" value={7}></Picker.Item> 
+      <Picker.Item label ="9" value={9}></Picker.Item>  
+      <Picker.Item label ="10" value={10}></Picker.Item> 
+      <Picker.Item label ="11" value={11}></Picker.Item> 
+      <Picker.Item label ="12" value={12}></Picker.Item> 
+      
+      </Picker>
 
-           <View style={styles.syllbutton}>  
-            <TextInput
-                 style={{ height: 180, borderColor: 'dodgerblue', borderWidth: 2,paddingLeft:10}} 
-                 onChangeText={function(currentvalue){
-                   console.log("currentvalue");
+      <Picker
+          selectedValue={pickedminute}
+          style={{ height: 50, width: 150 }}
+          onValueChange={(itemValue, itemIndex) => setpickedminute(itemValue)}
+      >  
+       <Picker.Item label ="0" value={0}></Picker.Item>  
+       <Picker.Item label ="1" value={1}></Picker.Item> 
+      <Picker.Item label ="2" value={2}></Picker.Item> 
+      <Picker.Item label ="3" value={3}></Picker.Item> 
+      <Picker.Item label ="4" value={4}></Picker.Item> 
+      <Picker.Item label ="5" value={5}></Picker.Item> 
+      <Picker.Item label ="6" value={6}></Picker.Item> 
+      <Picker.Item label ="8" value={7}></Picker.Item> 
+      <Picker.Item label ="9" value={9}></Picker.Item>  
+      <Picker.Item label ="10" value={10}></Picker.Item> 
+      <Picker.Item label ="11" value={11}></Picker.Item> 
+      <Picker.Item label ="12" value={12}></Picker.Item> 
+      <Picker.Item label ="13" value={13}></Picker.Item> 
+      <Picker.Item label ="14" value={14}></Picker.Item> 
+      <Picker.Item label ="15" value={15}></Picker.Item> 
+      <Picker.Item label ="16" value={16}></Picker.Item> 
+      <Picker.Item label ="17" value={17}></Picker.Item> 
+      <Picker.Item label ="18" value={18}></Picker.Item> 
+      <Picker.Item label ="19" value={19}></Picker.Item> 
+      <Picker.Item label ="20" value={20}></Picker.Item> 
+      <Picker.Item label ="21" value={21}></Picker.Item> 
+      <Picker.Item label ="22" value={22}></Picker.Item> 
+      <Picker.Item label ="23" value={23}></Picker.Item> 
+      <Picker.Item label ="24" value={24}></Picker.Item> 
+      <Picker.Item label ="25" value={25}></Picker.Item>  
+      <Picker.Item label ="26" value={26}></Picker.Item> 
+      <Picker.Item label ="27" value={27}></Picker.Item> 
+      <Picker.Item label ="28" value={28}></Picker.Item> 
+      <Picker.Item label ="29" value={29}></Picker.Item> 
+      <Picker.Item label ="30" value={30}></Picker.Item> 
+      <Picker.Item label ="31" value={31}></Picker.Item> 
+      <Picker.Item label ="32" value={32}></Picker.Item> 
+      <Picker.Item label ="33" value={33}></Picker.Item> 
+      <Picker.Item label ="34" value={34}></Picker.Item> 
+      <Picker.Item label ="35" value={35}></Picker.Item> 
+      <Picker.Item label ="36" value={36}></Picker.Item> 
+      <Picker.Item label ="37" value={37}></Picker.Item> 
+      <Picker.Item label ="38" value={38}></Picker.Item> 
+      <Picker.Item label ="39" value={39}></Picker.Item> 
+      <Picker.Item label ="40" value={40}></Picker.Item> 
+      <Picker.Item label ="41" value={41}></Picker.Item>  
+      <Picker.Item label ="42" value={42}></Picker.Item> 
+      <Picker.Item label ="43" value={43}></Picker.Item> 
+      <Picker.Item label ="44" value={44}></Picker.Item> 
+      <Picker.Item label ="45" value={45}></Picker.Item> 
+      <Picker.Item label ="46" value={46}></Picker.Item> 
+      <Picker.Item label ="47" value={47}></Picker.Item> 
+      <Picker.Item label ="48" value={48}></Picker.Item> 
+      <Picker.Item label ="49" value={49}></Picker.Item> 
+      <Picker.Item label ="50" value={50}></Picker.Item> 
+      <Picker.Item label ="51" value={51}></Picker.Item> 
+      <Picker.Item label ="52" value={52}></Picker.Item>  
+      <Picker.Item label ="53" value={53}></Picker.Item> 
+      <Picker.Item label ="54" value={54}></Picker.Item> 
+      <Picker.Item label ="55" value={55}></Picker.Item> 
+      <Picker.Item label ="56" value={56}></Picker.Item> 
+      <Picker.Item label ="57" value={57}></Picker.Item> 
+      <Picker.Item label ="58" value={58}></Picker.Item> 
+      <Picker.Item label ="59" value={59}></Picker.Item> 
+      </Picker>
 
-                 }}
-                 placeholder="Details"
-           /> 
-           </View>
+      <Picker selectedValue={am_pm}
+          style={{ height: 50, width: 150 }}
+          onValueChange={(itemValue, itemIndex) => set_am_pm(itemValue)}
+      >   
+      <Picker.Item label ="AM" value="AM"></Picker.Item> 
+      <Picker.Item label ="PM" value="PM"></Picker.Item> 
+
+      </Picker>
+
+
+
+      </View>
+     
            <View style={styles.syllbutton}> 
                <Button title="Confirm"></Button>
           </View>
-          </View>
+          </ScrollView>
       )
   }
   
@@ -124,12 +218,14 @@ const updatedatebox =()=>{
         flexDirection:"row",
         marginLeft:10,
         marginEnd:8,
+        marginTop:8,
         justifyContent:"space-between"
       },
       syllbutton:{
         marginTop:8,
         marginLeft:10,
-        marginEnd:8
+        marginEnd:8,
+        marginBottom:25
       }
      
   
