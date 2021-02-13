@@ -35,6 +35,9 @@ const Addnewassignment =(props)=>{
                  placeholder="Deadline"
            />
           </View>
+          <View style={styles.viewstyle}> 
+               <Button title="Confirm"></Button>
+          </View>
 
           </View>
       )

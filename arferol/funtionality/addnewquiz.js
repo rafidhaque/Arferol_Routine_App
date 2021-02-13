@@ -36,7 +36,9 @@ const Addnewquiz =(props)=>{
                  placeholder="Syllabus"
            /> 
            </View>
-
+           <View style={styles.viewstyle}> 
+               <Button title="Confirm"></Button>
+          </View>
           </View>
       )
   }

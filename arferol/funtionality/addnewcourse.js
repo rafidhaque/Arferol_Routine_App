@@ -45,6 +45,10 @@ const Addnewcourse =(props)=>{
            />
           </View>
 
+          <View style={styles.viewstyle}> 
+               <Button title="Confirm"></Button>
+          </View>
+
           </View>
       )
   }
