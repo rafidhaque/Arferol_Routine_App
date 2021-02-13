@@ -1,28 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect,useContext} from 'react';
 import Header from '../components/header';
-import {View,Text,StyleSheet,ScrollView, Button} from 'react-native';
+import firebase from 'firebase';
+import "firebase/firestore";
+
+import {View,Text,StyleSheet,ScrollView, Button,ActivityIndicator} from 'react-native';
 import Coursecard from '../components/coursecard';
+import {AuthContext, authcontextdata,AuthProvider} from '../contexts/authcontext';
 const Courselist=(props)=>{
-     const [courses,setcourses] = useState([
-      { 
-        key:1,
-        title:"CSE 4623 Mobile and App Development",
-        instructor:"Tasnim Ahmed"
-      },
-      { 
-        key:2,
-        title:"CSE 4617 Microprocessor and Interfacing",
-        instructor:"Ashraful Alam"
-      },
-      {
-        key:3,
-        title:"Math 4633 Probability and Statistics",
-        instructor:"Abdul Hakim Khan"
-      } 
-     ]) 
+    
+     const [courses, setCourses] = useState([]);
+     const [UploadCourse, setUploadCourse] = useState('');
+     const [show,setShow]=useState(false)
+     const [loading, setLoading] = useState(true);
+    
+     const authContext = useContext(AuthContext)  
 
+     const loadCourses = async () => {
+      setLoading(true);
+      firebase
+        .firestore()
+        .collection("users")
+        .doc(authContext.uid)
+        .collection("courses")
+        .orderBy("created_at", "desc")
+        .onSnapshot((querySnapshot) => {
+          let temp_courses = [];
+          querySnapshot.forEach((doc) => {
+            temp_courses.push({
+              id: doc.id,
+              data: doc.data(),
+            });
+          });
+          setCourses(temp_courses);
+         if (courses != null)
+         {
 
-       return(
+          setLoading(false);
+        }})
+      ;
+        
+    };
+  
+    useEffect(() => {
+      loadCourses();
+    }, []);    
+  if (!loading) {  return(
+
+      
         <View style={styles.mainview}>
           <Header toggledrawer={()=>{
                 props.navigation.toggleDrawer();
@@ -35,6 +59,7 @@ const Courselist=(props)=>{
          </Text>
       <View style={{padding:10}}><Button title="Add Course" onPress={()=>{
             props.navigation.navigate("Addnewcourse");
+            console.log(authContext);
       }}>
       </Button>
       </View>  
@@ -51,9 +76,16 @@ const Courselist=(props)=>{
           }
           </ScrollView>   
         </View>
-    )
-}
 
+       )  } else {
+        return (
+          <View style={{ flex: 1, justifyContent: "center" }}>
+            <ActivityIndicator size="large" color="red" animating={true} />
+          </View>
+        );
+      } 
+      
+    }
 const styles = StyleSheet.create({
    
     mainview:{

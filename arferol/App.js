@@ -7,6 +7,8 @@ import firebase from 'firebase';
 import {AuthContext, authcontextdata,AuthProvider} from './contexts/authcontext';
 import Drawernavigator from './navigation/drawernavigator';
 
+import "firebase/firestore";
+
 
 var firebaseConfig = {
   apiKey: "AIzaSyAEF7D1zGr03lrJ6suMUQwwjp5ZG5grQWQ",
@@ -28,7 +30,7 @@ export default function App() {
     <AuthContext.Consumer>
       {(auth) => (
         <NavigationContainer>
-          {auth.isloggedin ? <Drawernavigator /> : <AuthStackScreen />}
+          {auth.isloggedin ? <Drawernavigator /> : <Drawernavigator /> }
         </NavigationContainer>
       )}
     </AuthContext.Consumer>
