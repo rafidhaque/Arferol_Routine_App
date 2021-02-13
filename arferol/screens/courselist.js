@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/header';
 import {View,Text,StyleSheet,ScrollView} from 'react-native';
 import Coursecard from '../components/coursecard';
 const Courselist=(props)=>{
-      console.log(props.navigation);
+     const [courses,setcourses] = useState([
+      { 
+        key:1,
+        title:"CSE 4623 Mobile and App Development",
+        instructor:"Tasnim Ahmed"
+      },
+      { 
+        key:2,
+        title:"CSE 4617 Microprocessor and Interfacing",
+        instructor:"Ashraful Alam"
+      },
+      {
+        key:3,
+        title:"Math 4633 Probability and Statistics",
+        instructor:"Abdul Hakim Khan"
+      } 
+     ]) 
+
+
        return(
         <View style={styles.mainview}>
           <Header toggledrawer={()=>{
@@ -16,13 +34,17 @@ const Courselist=(props)=>{
              Courses: 
          </Text>
         <ScrollView style={styles.coursetyle}>
-           <Coursecard></Coursecard>
-           <Coursecard></Coursecard>
-           <Coursecard></Coursecard>
-           <Coursecard></Coursecard>
-           
-        </ScrollView>
-        
+           {
+           courses.map((item) =>{
+           return <Coursecard
+                key = {item.key} 
+                title={item.title}
+                instructor ={item.instructor}
+                navigation={props.navigation}
+               />  
+            })
+          }
+          </ScrollView>   
         </View>
     )
 }

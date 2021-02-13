@@ -3,16 +3,16 @@ import {View,Text,StyleSheet,Button} from 'react-native';
 
 
 const Assignmentdetail =(props)=>{
-
+   console.log(props)
     return(
         <View style={styles.cardstyle}> 
 
             <View style={styles.detailstyle}>
-                <Text style={styles.textstyle}>Course Name:CSE 4623 Mobile and App Development </Text>
-                <Text style={styles.textstyle}>Instructor:Tasnim Ahmed</Text>
-                <Text style={styles.textstyle}>Description:Implement react native</Text>
-                <Text style={styles.textstyle}>Status:Not Completed</Text>
-                <Text style={styles.textstyle}>Time remaining: 05:06:12:52  </Text>
+                <Text style={styles.textstyle}>Course Name:{props.title}</Text>
+                <Text style={styles.textstyle}>Instructor:{props.instructor}</Text>
+                <Text style={styles.textstyle}>Description:{props.description}</Text>
+                <Text style={styles.textstyle}>Status:{props.status}</Text>
+                <Text style={styles.textstyle}>Time remaining:</Text>
                     <View style={styles.buttongroupstyle}>
                         <Text style={styles.buttonstyle}> <Button title="Mark as Completed"> </Button> </Text>     
                     </View>
@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
         marginStart:10,
         marginEnd:10,   
         borderRadius:5,
-        height:185,
         shadowOpacity: 0.50,
         shadowRadius: 10,
         elevation:10,

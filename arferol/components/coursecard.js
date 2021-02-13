@@ -2,7 +2,7 @@ import React from 'react';
 import {View,Text,StyleSheet,Image, Button} from 'react-native';
 
 const Coursecard =(props)=>{
-   
+   console.log(props.navigation);
     return(
         <View style={styles.cardstyle}>
         
@@ -12,12 +12,18 @@ const Coursecard =(props)=>{
              }
         />
         <View style={styles.detailstyle}>
-            <Text style={styles.textstyle}>Course Name:CSE 4623 Mobile and App Development </Text>
-            <Text style={styles.textstyle} >Instructor:Tasnim Ahmed</Text>
+            <Text style={styles.textstyle}>Course Name:{props.title}</Text>
+            <Text style={styles.textstyle} >Instructor:{props.instructor}</Text>
         <View style={styles.buttongroupstyle}>
-            <Text> <Button title="View Classes"> </Button> </Text>     
-            <Text> <Button title="View Quiz"> </Button>   </Text> 
-            <Text style={styles.buttonstyle}> <Button title="View Assignment"> </Button>  </Text> 
+            <Text> <Button title="View Classes" onPress={()=>{
+                props.navigation.navigate("Classlist")
+            }}> </Button> </Text>     
+            <Text> <Button title="View Quiz" onPress={()=>{
+                props.navigation.navigate("Quizlist")
+            }} > </Button>   </Text> 
+            <Text style={styles.buttonstyle}> <Button title="View Assignment" onPress={()=>{
+                props.navigation.navigate("Assignmentlist")
+            }}> </Button>  </Text> 
         </View>
 
          </View>      
@@ -35,7 +41,6 @@ const styles = StyleSheet.create({
         marginStart:10,
         marginEnd:10,   
         borderRadius:5,
-        height:215,
         shadowOpacity: 0.50,
         shadowRadius: 10,
         elevation:10,
