@@ -7,6 +7,7 @@ import Quizlist from '../../screens/quizlist';
 import Addnewcourse from '../../funtionality/addnewcourse';
 import Addnewassignment from '../../funtionality/addnewassignment';
 import Addnewquiz from '../../funtionality/addnewquiz';
+import Addnewclass from '../../funtionality/addnewclass';
 const CourseStack = createStackNavigator();
 
 const Coursestackscreen =(props)=>{
@@ -46,6 +47,11 @@ const Coursestackscreen =(props)=>{
             <CourseStack.Screen
                 name ="Addnewquiz"
                 component={Addnewquiz}
+                options ={{headerShown:false}}
+            /> 
+            <CourseStack.Screen
+                name ="Addnewclass"
+                component={Addnewclass}
                 options ={{headerShown:false}}
             /> 
 

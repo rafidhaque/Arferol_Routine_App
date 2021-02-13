@@ -10,7 +10,7 @@ const Classlist =(props)=>{
     button = false;
   }
   else{
-    button = <View style={{padding:10}}><Button title={props.route.params.button} ></Button></View>;
+    button = <View style={{padding:10}}><Button title={props.route.params.button} onPress={()=>{props.navigation.navigate("Addnewclass")}}></Button></View>;
   }
 
   const [classes,setclasses] = useState([
