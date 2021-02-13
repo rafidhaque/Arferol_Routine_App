@@ -2,8 +2,6 @@ import React,{useEffect, useState} from 'react';
 import {View,Text,StyleSheet,TextInput, Button} from 'react-native';
 import Header from '../components/header'
 import {Calendar} from 'react-native-calendars';
-import {calculate_days_months_years_from_miliseconds} from '../funtionality/countdowntimer';
-import { set } from 'react-native-reanimated';
 
 const Addnewquiz =(props)=>{
       const [syllabus,setsyllabus] =  useState("");
