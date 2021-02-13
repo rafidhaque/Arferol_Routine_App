@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {View,Text,StyleSheet, ScrollView} from 'react-native';
+import {View,Text,StyleSheet, ScrollView,Button} from 'react-native';
 import Header from '../components/header';
 import Assignmentdetail from '../components/assignmentdetail';
 const Assignmentlist =(props)=>{
@@ -8,7 +8,7 @@ const Assignmentlist =(props)=>{
     button = false;
   }
   else{
-    button = props.route.params.button;
+    button = <View style={{padding:10}}><Button title={props.route.params.button} onPress={()=>{props.navigation.navigate("Addnewassignment")}}></Button></View>;
   }
 
   const [assignments,setassignments] = useState([

@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import {View,Text,StyleSheet,TextInput, Button} from 'react-native';
 import Header from '../components/header';
 
 const Addnewcourse =(props)=>{
@@ -8,7 +8,7 @@ const Addnewcourse =(props)=>{
       const [credit,setcredit] = useState(0);
 
       return(
-          <View style={styles.mainview}>
+          <View style={styles.viewstyle}>
                <Header toggledrawer={()=>{
                   props.navigation.toggleDrawer();
               }}
@@ -16,28 +16,34 @@ const Addnewcourse =(props)=>{
               >
            </Header>
            <Text style={styles.textstyle}>Add:</Text>  
-           <TextInput
+           <View style={styles.viewstyle}>  
+            <TextInput
                  style={{ height: 40, borderColor: 'dodgerblue', borderWidth: 2 }}
                  onChangeText={function(currentvalue){
 
                  }}
-                 value="Enter Course Title"
+                 placeholder="Enter Course Name"
+           /> 
+           </View>
+            <View style={styles.viewstyle}>  
+            <TextInput
+                 style={{ height: 40, borderColor: 'dodgerblue', borderWidth: 2}}
+                 onChangeText={function(currentvalue){
+
+                 }}
+                 placeholder="Enter Instuctor Name"
+                 
            />
-           <TextInput
+           </View>
+           <View style={styles.viewstyle}>  
+            <TextInput
                  style={{ height: 40, borderColor: 'dodgerblue', borderWidth: 2 }}
                  onChangeText={function(currentvalue){
 
                  }}
-                 value="Enter Instuctor Name"
+                 placeholder="Enter Credit"
            />
-          <TextInput
-                 style={{ height: 40, borderColor: 'dodgerblue', borderWidth: 2 }}
-                 onChangeText={function(currentvalue){
-
-                 }}
-                 value="Enter Credit"
-           />
-
+          </View>
 
           </View>
       )
@@ -56,6 +62,9 @@ const Addnewcourse =(props)=>{
         fontSize:30,
         fontWeight:"bold",
         marginLeft:10
+      },
+      viewstyle:{
+          padding:10
       }
      
   

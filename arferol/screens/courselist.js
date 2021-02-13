@@ -33,7 +33,11 @@ const Courselist=(props)=>{
           <Text style={styles.textstyle}>  
              Courses: 
          </Text>
-      <View style={{padding:10}}><Button title="Add Course"></Button></View>  
+      <View style={{padding:10}}><Button title="Add Course" onPress={()=>{
+            props.navigation.navigate("Addnewcourse");
+      }}>
+      </Button>
+      </View>  
         <ScrollView style={styles.coursetyle}>
            {
            courses.map((item) =>{

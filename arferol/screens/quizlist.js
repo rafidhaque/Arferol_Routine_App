@@ -1,14 +1,15 @@
 import React,{useState} from 'react';
-import {View,Text,StyleSheet, ScrollView} from 'react-native';
+import {View,Text,StyleSheet, ScrollView,Button} from 'react-native';
 import Header from '../components/header';
 import Quizdetail from '../components/quizdetail';
 const Quizlist =(props)=>{
+  console.log(props);
   let button; 
   if(props.route.params==undefined){
     button = false;
   }
   else{
-    button = props.route.params.button;
+    button = <View style={{padding:10}}><Button title={props.route.params.button} onPress={()=>{props.navigation.navigate("Addnewquiz")}}></Button></View>;
   }
 
   const [quizlist,setquizlist] = useState([

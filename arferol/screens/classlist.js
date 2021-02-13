@@ -3,12 +3,14 @@ import {View,Text,StyleSheet, ScrollView,Button} from 'react-native';
 import Header from '../components/header';
 import Classdetail from '../components/classdetail';
 const Classlist =(props)=>{
+  console.log(props.navigation);
+  console.log("Here in Classlist");
   let button; 
   if(props.route.params==undefined){
     button = false;
   }
   else{
-    button = props.route.params.button;
+    button = <View style={{padding:10}}><Button title={props.route.params.button} ></Button></View>;
   }
 
   const [classes,setclasses] = useState([
