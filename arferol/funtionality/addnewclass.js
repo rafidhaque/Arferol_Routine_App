@@ -1,29 +1,17 @@
 import React,{useEffect, useState} from 'react';
-import {View,Text,StyleSheet,TextInput, Button,Pi} from 'react-native';
+import {View,Text,StyleSheet,TextInput, Button} from 'react-native';
 import Header from '../components/header'
 import {Calendar} from 'react-native-calendars';
-import DateTimePicker from '@react-native-community/datetimepicker';
 
-const Addnewquiz =(props)=>{
+const Addnewclass =(props)=>{
       const [syllabus,setsyllabus] =  useState("");
       const [date,setdate] = useState("");
       const [day,setday] =useState("day");
       const [month,setmonth] = useState("month");
       const [year,setyear] = useState("year");
-      const [mode,setmode] = useState(false);
-      const [time,settime] = useState("");
 
      // return markedDates
-
-const handletime = (event, selectedDate) => {
-      setmode(false);
-      let date = selectedDate.toISOString().split('T')[1]
-      console.log(date);
-      let result = date.split(":");
-      console.log(result[0]);
-      console.log(result[1]);
-      console.log(result[2]);
-}
+      
 const formatdate =()=>{
      let a =   new Date().getFullYear();
      let b = (new Date().getMonth())+1;
@@ -60,10 +48,10 @@ const updatedatebox =()=>{
                <Header toggledrawer={()=>{
                   props.navigation.toggleDrawer();
               }}
-                title="Addnewquiz"
+                title="Addnewassignment"
               >
            </Header>
-           <Text style={styles.textstyle}>Add:</Text>  
+           <Text style={styles.textstyle}>Deadline:</Text>  
            <View style={styles.view}>  
             <Text
                  style={{ height: 40, borderColor: 'dodgerblue', borderWidth: 2 ,width:100,paddingLeft:42,paddingTop:10}}
@@ -96,50 +84,15 @@ const updatedatebox =()=>{
          
 
           </View>
-          <View style={styles.view}>
-            <Text
-                 style={{ height: 40, borderColor: 'dodgerblue', borderWidth: 2 ,width:100,paddingLeft:31,paddingTop:10}}
-            > 
-            Hours
-           </Text>
-           <Text
-                 style={{ height: 40, borderColor: 'dodgerblue', borderWidth: 2 ,width:100,paddingLeft:25,paddingTop:10}}
-            > 
-            Minutes
-           </Text>
-           <Text
-                 style={{ height: 40, borderColor: 'dodgerblue', borderWidth: 2 ,width:100,paddingLeft:38,paddingTop:10}}
-            > 
-            PM
-           </Text>
-
-           {mode ?     
-              <DateTimePicker
-              testID="dateTimePicker"
-              value={new Date()}
-              mode='time'
-              is24Hour={true}
-              display="default"
-              onChange={handletime}
-              
-             />:false }
-          
-
-           </View>
-           <View style={styles.syllbutton}> 
-               <Button title="Set Time" onPress={()=>{
-                 setmode(true);
-               }}></Button>
-          </View>
 
            <View style={styles.syllbutton}>  
             <TextInput
-                 style={{ height: 155, borderColor: 'dodgerblue', borderWidth: 2,paddingLeft:10}} 
+                 style={{ height: 180, borderColor: 'dodgerblue', borderWidth: 2,paddingLeft:10}} 
                  onChangeText={function(currentvalue){
                    console.log("currentvalue");
 
                  }}
-                 placeholder="Syllabus"
+                 placeholder="Details"
            /> 
            </View>
            <View style={styles.syllbutton}> 
@@ -171,7 +124,6 @@ const updatedatebox =()=>{
         flexDirection:"row",
         marginLeft:10,
         marginEnd:8,
-        marginTop:8,
         justifyContent:"space-between"
       },
       syllbutton:{
@@ -183,4 +135,4 @@ const updatedatebox =()=>{
   
 });
 
-export default Addnewquiz;
+export default Addnewclass;
