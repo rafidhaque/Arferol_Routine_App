@@ -3,23 +3,7 @@ import Header from "../components/header";
 import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import Coursecard from "../components/coursecard";
 const Courselist = (props) => {
-  const [courses, setcourses] = useState([
-    {
-      key: 1,
-      title: "CSE 4623 Mobile and App Development",
-      instructor: "Tasnim Ahmed",
-    },
-    {
-      key: 2,
-      title: "CSE 4617 Microprocessor and Interfacing",
-      instructor: "Ashraful Alam",
-    },
-    {
-      key: 3,
-      title: "Math 4633 Probability and Statistics",
-      instructor: "Abdul Hakim Khan",
-    },
-  ]);
+  const [courses, setcourses] = useState([]);
 
   return (
     <View style={styles.mainview}>
