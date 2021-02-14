@@ -207,7 +207,25 @@ const updatedatebox =()=>{
            /> 
            </View>
            <View style={styles.syllbutton}> 
-               <Button title="Confirm"></Button>
+               <Button title="Confirm" onPress={() => {
+                 let finaltime = pickedhour+":"+pickedminute+" "+am_pm
+                firebase
+                  .firestore()
+                  .collection("users")
+                  .doc(auth.currentuser.email)
+                  .collection("courses")
+                  .doc(auth.clickedpost).collection("quizzes")
+                  .add({
+                    coursetitle: auth.clickedpost,
+                    date:date,
+                    syllabus:syllabus,
+                    time:finaltime
+                  }).then(()=>{
+                    alert("Class successfully added");
+                  });
+                  }}>
+                    
+                  </Button>
           </View>
           </ScrollView>
       )}
