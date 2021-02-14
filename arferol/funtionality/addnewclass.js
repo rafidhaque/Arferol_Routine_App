@@ -49,6 +49,9 @@ const updatedatebox =()=>{
 
 
     return(
+
+      <AuthContext.Consumer>  
+      {(auth) => (
           <ScrollView style={styles.viewstyle}>
                <Header toggledrawer={()=>{
                   props.navigation.toggleDrawer();
@@ -193,6 +196,8 @@ const updatedatebox =()=>{
                <Button title="Confirm"></Button>
           </View>
           </ScrollView>
+      )}
+    </AuthContext.Consumer>
       )
   }
   

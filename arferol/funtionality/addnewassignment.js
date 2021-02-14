@@ -2,8 +2,8 @@ import React,{useEffect, useState} from 'react';
 import {View,Text,StyleSheet,TextInput, Button,Pic, ScrollView} from 'react-native';
 import Header from '../components/header'
 import {Calendar} from 'react-native-calendars';
-import {Picker} from '@react-native-community/picker'
-
+import {Picker} from '@react-native-community/picker';
+import { AuthContext,authcontextdata } from "../contexts/authcontext";
 const Addnewassignment =(props)=>{
       const [syllabus,setsyllabus] =  useState("");
       const [date,setdate] = useState("");
@@ -15,7 +15,6 @@ const Addnewassignment =(props)=>{
       const [pickedminute,setpickedminute] = useState(0);
       const [am_pm,set_am_pm] =useState('AM')
      // return markedDates
-
 const formatdate =()=>{
      let a =   new Date().getFullYear();
      let b = (new Date().getMonth())+1;
@@ -49,6 +48,8 @@ const updatedatebox =()=>{
 
 
     return(
+      <AuthContext.Consumer>
+       {(auth) =>(
           <ScrollView style={styles.viewstyle}>
                <Header toggledrawer={()=>{
                   props.navigation.toggleDrawer();
@@ -204,9 +205,25 @@ const updatedatebox =()=>{
            /> 
            </View>
            <View style={styles.syllbutton}> 
-               <Button title="Confirm"></Button>
+               <Button title="Confirm" onPress={() => {
+                 let finaltime = pickedhour+":"+pickedminute+" "+am_pm
+                firebase
+                  .firestore()
+                  .collection("users")
+                  .doc(auth.currentuser.email)
+                  .collection("courses")
+                  .doc(auth.clickedpost).collection("assignments")
+                  .add({
+                    coursetitle: auth.clickedpost,
+                    date:date,
+                    syllabus:syllabus,
+                    time:finaltime
+                  });
+              }}></Button>
           </View>
           </ScrollView>
+          )}
+          </AuthContext.Consumer>
       )
   }
   

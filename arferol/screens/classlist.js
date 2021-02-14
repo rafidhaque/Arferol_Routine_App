@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import Header from "../components/header";
 import Classdetail from "../components/classdetail";
+
 const Classlist = (props) => {
   console.log(props.navigation);
   console.log("Here in Classlist");

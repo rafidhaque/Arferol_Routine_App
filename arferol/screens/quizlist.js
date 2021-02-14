@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import Header from "../components/header";
 import Quizdetail from "../components/quizdetail";
+
 const Quizlist = (props) => {
   console.log(props);
   let button;

@@ -1,10 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, Button } from "react-native";
-
+import { AuthContext,authcontextdata } from "../contexts/authcontext";
 const Coursecard = (props) => {
   console.log(props.navigation);
   console.log("Here in coursecard");
   return (
+
+    <AuthContext.Consumer>  
+      {(auth) => (
     <View style={styles.cardstyle}>
       <Image
         style={{ width: 60, height: 60, marginStart: 20, marginTop: 33 }}
@@ -19,9 +22,11 @@ const Coursecard = (props) => {
             <Button
               title="View Classes"
               onPress={() => {
+                auth.setclickedpost(props.title);
                 props.navigation.navigate("Classlist", {
                   button: "ADD CLASS",
-                  navigation: props.navigation,
+                  navigation: props.navigation
+                
                 });
               }}
             >
@@ -33,9 +38,11 @@ const Coursecard = (props) => {
             <Button
               title="View Quiz"
               onPress={() => {
+                auth.setclickedpost(props.title);
                 props.navigation.navigate("Quizlist", {
                   button: "ADD QUIZ",
-                  navigation: props.navigation,
+                  navigation: props.navigation
+                  
                 });
               }}
             >
@@ -47,9 +54,11 @@ const Coursecard = (props) => {
             <Button
               title="View Assignment"
               onPress={() => {
+                auth.setclickedpost(props.title);
                 props.navigation.navigate("Assignmentlist", {
                   button: "ADD ASSIGNMENT",
-                  navigation: props.navigation,
+                  navigation: props.navigation
+                 
                 });
               }}
             >
@@ -59,6 +68,9 @@ const Coursecard = (props) => {
         </View>
       </View>
     </View>
+      )}
+    </AuthContext.Consumer>
+      
   );
 };
 

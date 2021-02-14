@@ -12,7 +12,7 @@ const authcontextdata =()=>{
 const AuthProvider =(props)=>{
     const[currentuser,setcurrentuser] = useState({});
     const[isloggedin,setisloggedin] = useState(false);
-
+    const[clickedpost,setclickedpost] = useState("");
     return(
     <AuthContext.Provider
      value={{
@@ -20,6 +20,8 @@ const AuthProvider =(props)=>{
         setcurrentuser,
         isloggedin,
         setisloggedin,
+        clickedpost,
+        setclickedpost   
          
      }}
 
