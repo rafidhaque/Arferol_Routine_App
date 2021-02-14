@@ -9,18 +9,17 @@ const Courselist = (props) => {
   const [courses, setcourses] = useState([]);
 
   const loadCourses = async () => {
-   
     const temp = await firebase
       .firestore()
       .collection("users")
       .doc(authcontextdata().currentuser.email)
       .collection("courses")
       .get();
-      console.log(temp.docs.map((doc) => doc.data()))
+    console.log(temp.docs.map((doc) => doc.data()));
     setcourses(temp.docs.map((doc) => doc.data()));
   };
 
-   loadCourses();
+  loadCourses();
 
   return (
     <View style={styles.mainview}>
