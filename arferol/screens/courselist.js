@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/header";
 import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import Coursecard from "../components/coursecard";
+import { AuthContext, authcontextdata } from "../contexts/authcontext";
+import firebase from "firebase";
+
 const Courselist = (props) => {
   const [courses, setcourses] = useState([]);
+
+  const loadCourses = async () => {
+    const temp = await firebase
+      .firestore()
+      .collection("users")
+      .doc(authcontextdata().currentuser.email)
+      .collection("courses")
+      .get();
+
+    setcourses(temp.docs.map((doc) => doc.data()));
+  };
+
+  // loadCourses();
 
   return (
     <View style={styles.mainview}>
@@ -26,8 +42,8 @@ const Courselist = (props) => {
         {courses.map((item) => {
           return (
             <Coursecard
-              key={item.key}
-              title={item.title}
+              key={item.coursetitle}
+              title={item.coursetitle}
               instructor={item.instructor}
               navigation={props.navigation}
             />
