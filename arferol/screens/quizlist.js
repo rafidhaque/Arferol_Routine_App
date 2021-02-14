@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import Header from "../components/header";
 import Quizdetail from "../components/quizdetail";
+import firebase from "firebase";
+import { authcontextdata } from "../contexts/authcontext";
 
 const Quizlist = (props) => {
   console.log(props);
@@ -23,6 +25,22 @@ const Quizlist = (props) => {
 
   const [quizlist, setquizlist] = useState([]);
 
+  const loadQuizzes = async () => {
+    const temp = await firebase
+      .firestore()
+      .collection("users")
+      .doc(authcontextdata().currentuser.email)
+      .collection("courses")
+      .doc(authcontextdata().clickedpost)
+      .collection("quizzes")
+      .get();
+
+    console.log(temp.docs.map((doc) => doc.data()));
+    setquizlist(temp.docs.map((doc) => doc.data()));
+  };
+
+  loadQuizzes();
+
   return (
     <View style={styles.mainview}>
       <Header
@@ -37,12 +55,13 @@ const Quizlist = (props) => {
         {quizlist.map((item) => {
           return (
             <Quizdetail
-              key={item.key}
-              title={item.title}
+              key={item.coursetitle}
+              title={item.coursetitle}
               instructor={item.instructor}
               syllabus={item.syllabus}
-              status={item.status}
-              time_remaining={item.time_remaining}
+              status="Not Completed"
+              time_remaining={item.date}
+              date={item.date}
             />
           );
         })}
