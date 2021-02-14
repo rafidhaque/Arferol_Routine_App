@@ -4,6 +4,7 @@ import Header from '../components/header'
 import {Calendar} from 'react-native-calendars';
 import {Picker} from '@react-native-community/picker';
 import { AuthContext,authcontextdata } from "../contexts/authcontext";
+import firebase from 'firebase';
 const Addnewassignment =(props)=>{
       const [syllabus,setsyllabus] =  useState("");
       const [date,setdate] = useState("");
@@ -199,6 +200,7 @@ const updatedatebox =()=>{
                  style={{ height: 125, borderColor: 'dodgerblue', borderWidth: 2,paddingLeft:10}} 
                  onChangeText={function(currentvalue){
                    console.log("currentvalue");
+                   setsyllabus(currentvalue)
 
                  }}
                  placeholder="Details"
@@ -216,8 +218,10 @@ const updatedatebox =()=>{
                   .add({
                     coursetitle: auth.clickedpost,
                     date:date,
-                    syllabus:syllabus,
+                    details:syllabus,
                     time:finaltime
+                  }).then(()=>{
+                    alert("Assignment successfully added");
                   });
               }}></Button>
           </View>
