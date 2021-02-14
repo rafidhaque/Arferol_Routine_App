@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import Header from "../components/header";
 import Classdetail from "../components/classdetail";
+import firebase from "firebase";
+import { authcontextdata } from "../contexts/authcontext";
 
 const Classlist = (props) => {
-  console.log(props.navigation);
-  console.log("Here in Classlist");
   let button;
   if (props.route.params == undefined) {
     button = false;
@@ -23,6 +23,23 @@ const Classlist = (props) => {
   }
 
   const [classes, setclasses] = useState([]);
+
+  const loadClasses = async () => {
+    const temp = await firebase
+      .firestore()
+      .collection("users")
+      .doc(authcontextdata().currentuser.email)
+      .collection("courses")
+      .doc(authcontextdata().clickedpost)
+      .collection("classes")
+      .get();
+
+    console.log(temp.docs.map((doc) => doc.data()));
+    setclasses(temp.docs.map((doc) => doc.data()));
+  };
+
+  loadClasses();
+
   console.log(props);
   return (
     <View style={styles.mainview}>
@@ -38,11 +55,10 @@ const Classlist = (props) => {
         {classes.map((item) => {
           return (
             <Classdetail
-              key={item.key}
-              title={item.title}
-              instructor={item.instructor}
-              time={item.time}
-              status={item.status}
+              key={item.coursetitle}
+              title={item.coursetitle}
+              time={item.date}
+              status="Not Attended"
             />
           );
         })}
