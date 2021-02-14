@@ -30,7 +30,7 @@ function Login(props) {
             >
               <View style={styles.logoColumn}>
                 <View style={styles.logo}>
-                  <Text style={styles.bx}>Student</Text>
+                  <Text style={styles.bx}>Arferol</Text>
                   <View style={styles.bxFiller}></View>
                   <View style={styles.rect7}></View>
                 </View>
