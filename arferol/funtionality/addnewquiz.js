@@ -2,7 +2,8 @@ import React,{useEffect, useState} from 'react';
 import {View,Text,StyleSheet,TextInput, Button,Pic, ScrollView} from 'react-native';
 import Header from '../components/header'
 import {Calendar} from 'react-native-calendars';
-import {Picker} from '@react-native-community/picker'
+import {Picker} from '@react-native-community/picker';
+import { AuthContext,authcontextdata } from "../contexts/authcontext";
 
 const Addnewquiz =(props)=>{
       const [syllabus,setsyllabus] =  useState("");
@@ -224,7 +225,7 @@ const updatedatebox =()=>{
                     alert("Class successfully added");
                   });
                   }}>
-                    
+
                   </Button>
           </View>
           </ScrollView>
