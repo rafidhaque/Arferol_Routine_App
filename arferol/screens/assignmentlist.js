@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Button } from "react-native";
 import Header from "../components/header";
 import Assignmentdetail from "../components/assignmentdetail";
+import firebase from "firebase";
+import { authcontextdata } from "../contexts/authcontext";
 
 const Assignmentlist = (props) => {
   let button;
@@ -22,6 +24,22 @@ const Assignmentlist = (props) => {
 
   const [assignments, setassignments] = useState([]);
 
+  const loadAssignments = async () => {
+    const temp = await firebase
+      .firestore()
+      .collection("users")
+      .doc(authcontextdata().currentuser.email)
+      .collection("courses")
+      .doc(authcontextdata().clickedpost)
+      .collection("assignments")
+      .get();
+
+    console.log(temp.docs.map((doc) => doc.data()));
+    setassignments(temp.docs.map((doc) => doc.data()));
+  };
+
+  loadAssignments();
+
   return (
     <View style={styles.mainview}>
       <Header
@@ -36,11 +54,12 @@ const Assignmentlist = (props) => {
         {assignments.map((item) => {
           return (
             <Assignmentdetail
-              key={item.key}
-              title={item.title}
+              key={item.coursetitle}
+              title={item.coursetitle}
               instructor={item.instructor}
-              description={item.description}
-              status={item.status}
+              description={item.details}
+              time={item.time}
+              status="Not Complete"
             />
           );
         })}
