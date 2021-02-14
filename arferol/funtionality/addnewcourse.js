@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import Header from "../components/header";
-import firestore from "@react-native-firebase/firestore";
+import firebase from "firebase";
 import { AuthContext } from "../contexts/authcontext";
 
 const Addnewcourse = (props) => {
@@ -52,7 +52,17 @@ const Addnewcourse = (props) => {
             <Button
               title="Confirm"
               onPress={() => {
-                console.log(auth.currentuser.email);
+                firebase
+                  .firestore()
+                  .collection("users")
+                  .doc(auth.currentuser.email)
+                  .collection("courses")
+                  .doc(coursetitle)
+                  .set({
+                    coursetitle: coursetitle,
+                    instructor: instructor,
+                    credit: credit,
+                  });
               }}
             ></Button>
           </View>

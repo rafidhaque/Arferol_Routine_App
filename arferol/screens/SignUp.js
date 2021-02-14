@@ -1,4 +1,4 @@
-import React, { Component,useState} from "react";
+import React, { Component, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -6,19 +6,19 @@ import {
   ImageBackground,
   Text,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 import IoniconsIcon from "react-native-vector-icons/Ionicons";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
-import firebase from 'firebase';
+import firebase from "firebase";
 
 function SignUp(props) {
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  const [confirmpassword,setconfirmpassword] = useState("");
+  const [confirmpassword, setconfirmpassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   return (
@@ -42,12 +42,11 @@ function SignUp(props) {
                 <View style={styles.rect5}></View>
               </View>
               <View style={styles.icon2RowFiller}>
-              <FontAwesomeIcon
-                name="circle"
-                style={styles.icon4}
-              ></FontAwesomeIcon>
+                <FontAwesomeIcon
+                  name="circle"
+                  style={styles.icon4}
+                ></FontAwesomeIcon>
               </View>
-              
             </View>
             <Text style={styles.text3}>CREATE ACCOUNT</Text>
             <View style={styles.form}>
@@ -62,16 +61,11 @@ function SignUp(props) {
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.nameInput}
-                    onChangeText={function(currentinput){
-                      
+                    onChangeText={function (currentinput) {
                       setname(currentinput);
-                      
                     }}
                   ></TextInput>
                 </View>
-                
-
-
 
                 <View style={styles.email}>
                   <EvilIconsIcon
@@ -83,16 +77,14 @@ function SignUp(props) {
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.emailInput}
-                    onChangeText={function(currentinput){
-                    
-                        setemail(currentinput);
-                    
+                    onChangeText={function (currentinput) {
+                      setemail(currentinput);
                     }}
                   ></TextInput>
                 </View>
               </View>
               <View style={styles.nameColumnFiller}></View>
-          
+
               <View style={styles.password}>
                 <EvilIconsIcon name="lock" style={styles.icon7}></EvilIconsIcon>
                 <TextInput
@@ -100,14 +92,12 @@ function SignUp(props) {
                   placeholderTextColor="rgba(255,255,255,1)"
                   secureTextEntry={true}
                   style={styles.passwordInput}
-                  onChangeText={function(currentinput){
-                   
+                  onChangeText={function (currentinput) {
                     setpassword(currentinput);
-                 
                   }}
                 ></TextInput>
               </View>
-             
+
               <View style={styles.nameColumnFiller}></View>
               <View style={styles.password}>
                 <EvilIconsIcon name="lock" style={styles.icon7}></EvilIconsIcon>
@@ -116,74 +106,62 @@ function SignUp(props) {
                   placeholderTextColor="rgba(255,255,255,1)"
                   secureTextEntry={true}
                   style={styles.passwordInput}
-                  onChangeText={function(currentinput){
-                    
+                  onChangeText={function (currentinput) {
                     setconfirmpassword(currentinput);
-                    
                   }}
                 ></TextInput>
               </View>
-            
             </View>
           </View>
           <View style={styles.progressBarColumnFiller}></View>
-          
+
           <TouchableOpacity
             onPress={() => {
-                if(name && email && password && confirmpassword){
-                  if(password!=confirmpassword){
-                    alert("Passwords Do not match");
-                 }
-                 else{
+              if (name && email && password && confirmpassword) {
+                if (password != confirmpassword) {
+                  alert("Passwords Do not match");
+                } else {
                   firebase
-                  .auth()
-                  .createUserWithEmailAndPassword(email, password)
-                  .then((userCreds) => {
-                    userCreds.user.updateProfile({ displayName: name });
-                    firebase
-                      .firestore()
-                      .collection("users")
-                      .doc(userCreds.user.uid)
-                      .set({
-                        name: name,
-                        email: email,
-                      })
-                      .then(() => {
-                      
-                        alert("Account created successfully!");
-                        console.log(userCreds.user);
-                        props.navigation.navigate("Login");
-                      })
-                      .catch((error) => {
-                        
-                        alert(error);
-                      });
-                  })
-                  .catch((error) => {
-                    
-                    alert(error);
-                  });
-                 }
-              } 
-               else{
-                  alert("Fields Cannot be empty");
-               }
-               
-                
-             }
-           }
+                    .auth()
+                    .createUserWithEmailAndPassword(email, password)
+                    .then((userCreds) => {
+                      userCreds.user.updateProfile({ displayName: name });
+                      firebase
+                        .firestore()
+                        .collection("users")
+                        .doc(email)
+                        .set({
+                          name: name,
+                          email: email,
+                        })
+                        .then(() => {
+                          alert("Account created successfully!");
+                          console.log(userCreds.user);
+                          props.navigation.navigate("Login");
+                        })
+                        .catch((error) => {
+                          alert(error);
+                        });
+                    })
+                    .catch((error) => {
+                      alert(error);
+                    });
+                }
+              } else {
+                alert("Fields Cannot be empty");
+              }
+            }}
             style={styles.button}
           >
-          <Text style={styles.text2}>Sign Up</Text>
+            <Text style={styles.text2}>Sign Up</Text>
           </TouchableOpacity>
 
           <TouchableOpacity
             onPress={() => props.navigation.navigate("Login")}
             style={styles.button}
           >
-          <Text style={styles.text3}>Already Have an Account?Log In</Text>
+            <Text style={styles.text3}>Already Have an Account?Log In</Text>
           </TouchableOpacity>
-        
         </ImageBackground>
       </View>
     </View>
@@ -194,13 +172,13 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     backgroundColor: "rgb(255,255,255)",
-    alignSelf:"stretch"
+    alignSelf: "stretch",
   },
   background: {
-    flex: 1
+    flex: 1,
   },
   rect2: {
-    flex: 1
+    flex: 1,
   },
   rect2_imageStyle: {},
   progressBar: {
@@ -208,22 +186,22 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginLeft: 28,
     marginRight: 28,
-    alignSelf:"center"
+    alignSelf: "center",
   },
   icon2: {
     color: "rgba(30,174,199,1)",
     fontSize: 40,
     width: 33,
-    height: 40
+    height: 40,
   },
   rect4: {
     width: 50,
     height: 7,
     backgroundColor: "rgba(230, 230, 230,1)",
     borderRadius: 40,
-    opacity:0.75,
+    opacity: 0.75,
     marginLeft: 6,
-    marginTop: 16
+    marginTop: 16,
   },
   icon3: {
     color: "#1fb2cc",
@@ -231,7 +209,7 @@ const styles = StyleSheet.create({
     width: 40,
     height: 36,
     marginLeft: 4,
-    marginTop: 4
+    marginTop: 4,
   },
   rect5: {
     width: 50,
@@ -239,42 +217,41 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(230, 230, 230,1)",
     opacity: 0.75,
     borderRadius: 40,
-    marginTop: 16
+    marginTop: 16,
   },
   icon2Row: {
     height: 40,
-    flexDirection: "row"
+    flexDirection: "row",
   },
   icon2RowFiller: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: "row",
   },
   icon4: {
     color: "rgba(255,255,255,1)",
-    fontSize:37,
+    fontSize: 37,
     width: 38,
     height: 20,
-    opacity: .75,
-    marginTop:2,
-    marginLeft:5.5
-  
+    opacity: 0.75,
+    marginTop: 2,
+    marginLeft: 5.5,
   },
   text3: {
     color: "rgba(255,255,255,1)",
     fontSize: 24,
     marginTop: 67,
     marginLeft: 0,
-    alignSelf:"center"
+    alignSelf: "center",
   },
   form: {
     height: 320,
-    marginTop: 108
+    marginTop: 108,
   },
   name: {
     height: 59,
     backgroundColor: "rgba(255,255,255,0.25)",
     borderRadius: 5,
-    flexDirection: "row"
+    flexDirection: "row",
   },
   icon5: {
     color: "rgba(255,255,255,1)",
@@ -282,7 +259,7 @@ const styles = StyleSheet.create({
     width: 33,
     height: 33,
     marginLeft: 15,
-    marginTop: 13
+    marginTop: 13,
   },
   nameInput: {
     height: 30,
@@ -291,20 +268,20 @@ const styles = StyleSheet.create({
     flex: 1,
     marginRight: 17,
     marginLeft: 13,
-    marginTop: 14
+    marginTop: 14,
   },
   email: {
     height: 59,
     backgroundColor: "rgba(255,255,255,0.25)",
     borderRadius: 5,
     flexDirection: "row",
-    marginTop: 27
+    marginTop: 27,
   },
   icon6: {
     color: "rgba(255,255,255,1)",
     fontSize: 33,
     marginLeft: 15,
-    alignSelf: "center"
+    alignSelf: "center",
   },
   emailInput: {
     height: 30,
@@ -312,11 +289,11 @@ const styles = StyleSheet.create({
     flex: 1,
     marginRight: 17,
     marginLeft: 13,
-    marginTop: 14
+    marginTop: 14,
   },
   nameColumn: {},
   nameColumnFiller: {
-    flex: 1
+    flex: 1,
   },
   password: {
     height: 59,
@@ -325,12 +302,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
 
-  
   icon7: {
     color: "rgba(255,255,255,1)",
     fontSize: 33,
     marginLeft: 15,
-    marginTop: 13
+    marginTop: 13,
   },
   passwordInput: {
     height: 30,
@@ -338,16 +314,15 @@ const styles = StyleSheet.create({
     flex: 1,
     marginRight: 17,
     marginLeft: 13,
-    marginTop: 14
+    marginTop: 14,
   },
   progressBarColumn: {
     marginTop: 53,
     marginLeft: 41,
     marginRight: 41,
-    
   },
   progressBarColumnFiller: {
-    flex: 1
+    flex: 1,
   },
   button: {
     height: 55,
@@ -359,18 +334,16 @@ const styles = StyleSheet.create({
     marginBottom: 105,
     marginLeft: 41,
     marginRight: 41,
-
   },
   text2: {
     width: 66,
     color: "rgba(255,255,255,1)",
-    alignSelf: "center"
+    alignSelf: "center",
   },
-  text3:{
+  text3: {
     color: "rgba(255,255,255,1)",
-    alignSelf: "center"
-  }
-  
+    alignSelf: "center",
+  },
 });
 
 export default SignUp;
